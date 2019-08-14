@@ -1,0 +1,11 @@
+{
+  "question": "What age should your potential partner be?",
+  "category": "hard_fact",
+  "question_type": {
+    "type": "number_range",
+    "range": {
+      "from": 18,
+      "to": 140
+    }
+  }
+}
