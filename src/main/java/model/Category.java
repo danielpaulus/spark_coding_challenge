@@ -1,11 +1,12 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import org.springframework.data.annotation.Id;
 
 public class Category {
 
 	@Id
-	private final String id;
+	private String id;
 	private final String name;
 
 	public String getId() {
@@ -16,8 +17,8 @@ public class Category {
 		return name;
 	}
 
-	public Category(String id, String name) {
-		this.id = id;
+	@JsonCreator
+	public Category(String name) {
 		this.name = name;
 	}
 }
