@@ -3,6 +3,7 @@ package dbloader;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.NumberRangeQuestionType;
 import model.Question;
+import model.SingleChoiceConditionalQuestionType;
 import model.SingleChoiceQuestionType;
 import org.junit.jupiter.api.Test;
 import org.springframework.core.io.ClassPathResource;
@@ -14,6 +15,17 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class QuestionSerializationTest {
 
 	private ObjectMapper objectMapper = new ObjectMapper();
+
+	@Test
+	void if_single_choice_conditional_is_parsed_correcty() throws Exception {
+		var jsonFile = new ClassPathResource("single_choice_conditional_question.json").getFile();
+		var numberRangeQuestion = objectMapper.readValue(jsonFile, Question.class);
+		assertThat(numberRangeQuestion.getCategory().getName()).isEqualTo("hard_fact");
+		assertThat(numberRangeQuestion.getQuestion()).isEqualTo("How important is the age of your partner to you?");
+		assertThat(numberRangeQuestion.getQuestionType()).isInstanceOf(SingleChoiceConditionalQuestionType.class);
+		var numberRangeQuestionType = (SingleChoiceConditionalQuestionType) numberRangeQuestion.getQuestionType();
+		assertThat(numberRangeQuestionType.getCondition().getIfConditionPositive().getQuestionType()).isInstanceOf(NumberRangeQuestionType.class);
+	}
 
 	@Test
 	void if_number_range_question_is_parsed_correctly() throws Exception {
