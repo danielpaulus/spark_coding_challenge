@@ -1,0 +1,12 @@
+{
+  "question": "How important is the gender of your partner?",
+  "category": "hard_fact",
+  "question_type": {
+    "type": "single_choice",
+    "options": [
+      "not important",
+      "important",
+      "very important"
+    ]
+  }
+}
