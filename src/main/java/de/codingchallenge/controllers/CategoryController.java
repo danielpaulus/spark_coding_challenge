@@ -10,17 +10,17 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
-public class CategoryController {
+class CategoryController {
 
 	private final CategoryRepository categoryRepository;
 
 	@Autowired
-	public CategoryController(CategoryRepository categoryRepository) {
+	CategoryController(CategoryRepository categoryRepository) {
 		this.categoryRepository = categoryRepository;
 	}
 
 	@RequestMapping("/category")
-	public List<Category> categories() {
+	List<Category> categories() {
 		return categoryRepository.findAll();
 	}
 }

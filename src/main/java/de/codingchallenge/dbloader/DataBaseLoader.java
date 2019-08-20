@@ -22,7 +22,7 @@ public class DataBaseLoader implements CommandLineRunner {
 	boolean seedDb;
 
 	@Autowired
-	public DataBaseLoader(CategoryRepository categoryRepository, QuestionRepository questionRepository,
+	DataBaseLoader(CategoryRepository categoryRepository, QuestionRepository questionRepository,
 			SurveyRepository surveyRepository) {
 		this.categoryRepository = categoryRepository;
 		this.questionRepository = questionRepository;

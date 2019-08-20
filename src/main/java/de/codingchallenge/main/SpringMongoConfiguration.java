@@ -20,13 +20,11 @@ public class SpringMongoConfiguration extends AbstractMongoConfiguration {
 	@Bean
 	@Override
 	public MongoClient mongoClient() {
-
-		MongoClient client = new MongoClient("localhost");
-		return client;
+		return new MongoClient("localhost");
 	}
 
 	@Bean
-	public MongoTemplate mongoTemplate() throws Exception {
+	public MongoTemplate mongoTemplate() {
 		return new MongoTemplate(mongoClient(), getDatabaseName());
 	}
 
