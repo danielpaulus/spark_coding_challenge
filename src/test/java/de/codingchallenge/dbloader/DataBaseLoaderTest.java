@@ -15,13 +15,13 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
@@ -39,6 +39,20 @@ class DataBaseLoaderTest {
 	void setUp() {
 		dataBaseLoader = new DataBaseLoader(categoryRepository, questionRepository, surveyRepository);
 		dataBaseLoader.seedDb = true;
+	}
+
+	@Test
+	void if_db_stays_untouched_when_seed_is_not_specified() throws Exception {
+		dataBaseLoader.seedDb = false;
+		dataBaseLoader.run();
+		verifyUntouched(categoryRepository);
+		verifyUntouched(questionRepository);
+		verifyUntouched(surveyRepository);
+	}
+
+	private void verifyUntouched(MongoRepository mock) {
+		verify(mock, never()).saveAll(any());
+		verify(mock, never()).save(any());
 	}
 
 	@Test
