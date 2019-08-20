@@ -22,11 +22,11 @@ public class JsonImport {
 		this.questions = questions;
 	}
 
-	public List<Question> getQuestions() {
+	List<Question> getQuestions() {
 		return questions;
 	}
 
-	public List<Category> getCategories() {
+	List<Category> getCategories() {
 		return categories;
 	}
 

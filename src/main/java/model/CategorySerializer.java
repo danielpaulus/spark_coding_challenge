@@ -7,11 +7,15 @@ import com.fasterxml.jackson.databind.ser.std.StdSerializer;
 import java.io.IOException;
 
 public class CategorySerializer extends StdSerializer<Category> {
+	/**
+	 * This one is needed for Jackson to work
+	 */
+	@SuppressWarnings("unused")
 	public CategorySerializer() {
 		this(null);
 	}
 
-	public CategorySerializer(Class<Category> t) {
+	private CategorySerializer(Class<Category> t) {
 		super(t);
 	}
 

@@ -9,6 +9,7 @@ public class Category {
 
 	private final String name;
 	@Id
+	@SuppressWarnings("unused")
 	private String id;
 
 	@JsonCreator

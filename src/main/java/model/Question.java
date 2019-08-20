@@ -6,24 +6,26 @@ import org.springframework.data.annotation.Id;
 
 public class Question {
 
-	private final String question;
+	private final String questionText;
 	private final Category category;
 	private final QuestionType questionType;
 	@Id
+	@SuppressWarnings("unused")
 	private String id;
 
 	@JsonCreator
 	public Question(
-			@JsonProperty("question") String question,
+			@JsonProperty("question") String questionText,
 			@JsonProperty("category") Category category,
 			@JsonProperty("question_type") QuestionType questionType) {
-		this.question = question;
+		this.questionText = questionText;
 		this.category = category;
 		this.questionType = questionType;
 	}
 
-	public String getQuestion() {
-		return question;
+	@JsonProperty("question")
+	public String getQuestionText() {
+		return questionText;
 	}
 
 	public Category getCategory() {

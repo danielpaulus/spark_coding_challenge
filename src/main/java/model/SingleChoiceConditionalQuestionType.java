@@ -3,8 +3,8 @@ package model;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class SingleChoiceConditionalQuestionType implements QuestionType {
 
@@ -38,12 +38,12 @@ public class SingleChoiceConditionalQuestionType implements QuestionType {
 	public static class Condition {
 
 		private final Question ifConditionPositive;
-		private final HashMap<String, Object> condition;
+		private final Map<String, Object> condition;
 
 		@JsonCreator
 		public Condition(
 				@JsonProperty("if_positive") Question ifConditionPositive,
-				@JsonProperty("predicate") HashMap<String, Object> condition) {
+				@JsonProperty("predicate") Map<String, Object> condition) {
 
 			this.ifConditionPositive = ifConditionPositive;
 			this.condition = condition;
@@ -55,7 +55,7 @@ public class SingleChoiceConditionalQuestionType implements QuestionType {
 		}
 
 		@JsonProperty("predicate")
-		public HashMap<String, Object> getCondition() {
+		public Map<String, Object> getCondition() {
 			return condition;
 		}
 

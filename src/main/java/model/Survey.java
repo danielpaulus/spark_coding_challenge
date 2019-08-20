@@ -8,7 +8,9 @@ import java.util.List;
 public class Survey {
 
 	private final List<Question> questions;
+
 	@Id
+	@SuppressWarnings("unused")
 	private String id;
 
 	public Survey(List<Question> questions) {

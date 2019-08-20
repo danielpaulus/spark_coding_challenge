@@ -16,7 +16,7 @@ import java.nio.file.Files;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class QuestionSerializationTest {
+class QuestionSerializationTest {
 
 	private ObjectMapper objectMapper = new ObjectMapper();
 
@@ -59,7 +59,7 @@ public class QuestionSerializationTest {
 			var jsonFile = new ClassPathResource("single_choice_conditional_question.json").getFile();
 			var numberRangeQuestion = objectMapper.readValue(jsonFile, Question.class);
 			assertThat(numberRangeQuestion.getCategory().getName()).isEqualTo("hard_fact");
-			assertThat(numberRangeQuestion.getQuestion()).isEqualTo("How important is the age of your partner to you?");
+			assertThat(numberRangeQuestion.getQuestionText()).isEqualTo("How important is the age of your partner to you?");
 			assertThat(numberRangeQuestion.getQuestionType()).isInstanceOf(SingleChoiceConditionalQuestionType.class);
 			var numberRangeQuestionType = (SingleChoiceConditionalQuestionType) numberRangeQuestion.getQuestionType();
 			assertThat(numberRangeQuestionType.getCondition().getIfConditionPositive().getQuestionType())
@@ -72,7 +72,7 @@ public class QuestionSerializationTest {
 
 			var numberRangeQuestion = objectMapper.readValue(jsonFile, Question.class);
 			assertThat(numberRangeQuestion.getCategory().getName()).isEqualTo("hard_fact");
-			assertThat(numberRangeQuestion.getQuestion()).isEqualTo("What age should your potential partner be?");
+			assertThat(numberRangeQuestion.getQuestionText()).isEqualTo("What age should your potential partner be?");
 			assertThat(numberRangeQuestion.getQuestionType()).isInstanceOf(NumberRangeQuestionType.class);
 			var numberRangeQuestionType = (NumberRangeQuestionType) numberRangeQuestion.getQuestionType();
 			assertThat(numberRangeQuestionType.getRange().getFrom()).isEqualTo(18);
@@ -86,7 +86,7 @@ public class QuestionSerializationTest {
 
 			var singleChoiceQuestion = objectMapper.readValue(jsonFile, Question.class);
 			assertThat(singleChoiceQuestion.getCategory().getName()).isEqualTo("hard_fact");
-			assertThat(singleChoiceQuestion.getQuestion()).isEqualTo("How important is the gender of your partner?");
+			assertThat(singleChoiceQuestion.getQuestionText()).isEqualTo("How important is the gender of your partner?");
 			assertThat(singleChoiceQuestion.getQuestionType()).isInstanceOf(SingleChoiceQuestionType.class);
 			var singleChoiceQuestionType = (SingleChoiceQuestionType) singleChoiceQuestion.getQuestionType();
 			assertThat(singleChoiceQuestionType.getOptions()).containsExactly("not important", "important", "very important");
