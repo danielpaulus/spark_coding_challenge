@@ -7,9 +7,14 @@ import org.springframework.data.annotation.Id;
 @JsonSerialize(using = CategorySerializer.class)
 public class Category {
 
+	private final String name;
 	@Id
 	private String id;
-	private final String name;
+
+	@JsonCreator
+	public Category(String name) {
+		this.name = name;
+	}
 
 	public String getId() {
 		return id;
@@ -17,10 +22,5 @@ public class Category {
 
 	public String getName() {
 		return name;
-	}
-
-	@JsonCreator
-	public Category(String name) {
-		this.name = name;
 	}
 }

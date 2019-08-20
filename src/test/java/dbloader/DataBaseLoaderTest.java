@@ -2,6 +2,7 @@ package dbloader;
 
 import model.Category;
 import model.Question;
+import model.Survey;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
@@ -13,10 +14,12 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import repository.CategoryRepository;
 import repository.QuestionRepository;
+import repository.SurveyRepository;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
@@ -25,8 +28,8 @@ import static org.mockito.Mockito.verify;
 class DataBaseLoaderTest {
 
 	@Mock CategoryRepository categoryRepository;
-
 	@Mock QuestionRepository questionRepository;
+	@Mock SurveyRepository surveyRepository;
 
 	@Captor ArgumentCaptor<List<Category>> categoryCaptor;
 	@Captor ArgumentCaptor<List<Question>> questionCaptor;
@@ -34,7 +37,7 @@ class DataBaseLoaderTest {
 
 	@BeforeEach
 	void setUp() {
-		dataBaseLoader = new DataBaseLoader(categoryRepository, questionRepository);
+		dataBaseLoader = new DataBaseLoader(categoryRepository, questionRepository, surveyRepository);
 	}
 
 	@Test
@@ -49,5 +52,11 @@ class DataBaseLoaderTest {
 		dataBaseLoader.run();
 		verify(questionRepository, times(1)).saveAll(questionCaptor.capture());
 		assertThat(questionCaptor.getValue()).hasSize(25);
+	}
+
+	@Test
+	void if_survey_is_saved() throws Exception {
+		dataBaseLoader.run();
+		verify(surveyRepository, times(1)).save(any(Survey.class));
 	}
 }
