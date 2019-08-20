@@ -15,7 +15,7 @@ public class SpringMongoTestConfiguration extends AbstractMongoConfiguration {
 
 	@Override
 	protected String getDatabaseName() {
-		return "test";
+		return "survey.codingchallenge.app.test";
 	}
 
 	@Bean
