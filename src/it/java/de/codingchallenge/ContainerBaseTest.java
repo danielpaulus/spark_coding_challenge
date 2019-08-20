@@ -10,7 +10,7 @@ abstract class ContainerBaseTest {
 		MONGO_CONTAINER.start();
 	}
 
-	private ContainerBaseTest() {
+	ContainerBaseTest() {
 	}
 }
 

@@ -1,7 +1,6 @@
 package de.codingchallenge;
 
 import de.codingchallenge.main.Application;
-import de.codingchallenge.repository.CategoryRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.skyscreamer.jsonassert.JSONAssert;
@@ -25,19 +24,16 @@ import org.testcontainers.junit.jupiter.Testcontainers;
 @AutoConfigureMockMvc
 @Testcontainers
 @ActiveProfiles("test")
-public class CategoryControllerIT extends ContainerBaseTest {
+class CategoryControllerIT extends ContainerBaseTest {
 
 	@Autowired
-	MockMvc mockMvc;
-	@Autowired
-	CategoryRepository categoryRepository;
-
-	String expectedJson = "[\"hard_fact\",\"lifestyle\",\"introversion\",\"passion\"]";
+	private MockMvc mockMvc;
 
 	@Test
 	void if_all_four_categories_can_be_retrieved() throws Exception {
 		var result = mockMvc.perform(MockMvcRequestBuilders.get("/api/category")).andReturn();
-		String contentAsString = result.getResponse().getContentAsString();
+		var contentAsString = result.getResponse().getContentAsString();
+		String expectedJson = "[\"hard_fact\",\"lifestyle\",\"introversion\",\"passion\"]";
 		JSONAssert.assertEquals(expectedJson, contentAsString, false);
 	}
 }
