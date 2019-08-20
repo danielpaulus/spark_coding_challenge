@@ -22,13 +22,13 @@ public class SpringMongoTestConfiguration extends AbstractMongoConfiguration {
 	@Profile("test")
 	@Override
 	public MongoClient mongoClient() {
-		MongoClient client = new MongoClient("localhost:" + ContainerBaseTest.MONGO_CONTAINER.getMappedPort(27017));
-		return client;
+		return new MongoClient("localhost:" + ContainerBaseTest.MONGO_CONTAINER.getMappedPort(27017));
 	}
 
 	@Bean
+	@Override
 	@Profile("test")
-	public MongoTemplate mongoTemplate() throws Exception {
+	public MongoTemplate mongoTemplate() {
 		return new MongoTemplate(mongoClient(), getDatabaseName());
 	}
 

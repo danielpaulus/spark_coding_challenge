@@ -7,8 +7,10 @@ abstract class ContainerBaseTest {
 
 	static {
 		MONGO_CONTAINER = new GenericContainer("mongo:latest").withExposedPorts(27017);
-
 		MONGO_CONTAINER.start();
+	}
+
+	private ContainerBaseTest() {
 	}
 }
 
