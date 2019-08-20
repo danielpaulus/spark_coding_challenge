@@ -1,8 +1,10 @@
 package model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.springframework.data.annotation.Id;
 
+@JsonSerialize(using = CategorySerializer.class)
 public class Category {
 
 	@Id

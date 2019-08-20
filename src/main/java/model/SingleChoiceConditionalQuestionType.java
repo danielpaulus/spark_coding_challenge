@@ -49,10 +49,12 @@ public class SingleChoiceConditionalQuestionType implements QuestionType {
 			this.condition = condition;
 		}
 
+		@JsonProperty("if_positive")
 		public Question getIfConditionPositive() {
 			return ifConditionPositive;
 		}
 
+		@JsonProperty("predicate")
 		public HashMap<String, Object> getCondition() {
 			return condition;
 		}

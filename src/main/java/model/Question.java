@@ -27,6 +27,7 @@ public class Question {
 		return category;
 	}
 
+	@JsonProperty("question_type")
 	public QuestionType getQuestionType() {
 		return questionType;
 	}
