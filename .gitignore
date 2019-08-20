@@ -4,7 +4,7 @@
 # User-specific stuff
 .idea
 *.iml
-
+target
 # CMake
 cmake-build-*/
 
