@@ -17,4 +17,7 @@ public class Survey {
 		this.questions = new ArrayList<>(questions);
 	}
 
+	public List<Question> getQuestions() {
+		return questions;
+	}
 }
