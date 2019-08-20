@@ -17,16 +17,15 @@ public class DataBaseLoader implements CommandLineRunner {
 	private final CategoryRepository categoryRepository;
 	private final QuestionRepository questionRepository;
 	private final SurveyRepository surveyRepository;
-
-	@Value("${db.seed:false}")
-	boolean seedDb;
+	private final boolean seedDb;
 
 	@Autowired
 	DataBaseLoader(CategoryRepository categoryRepository, QuestionRepository questionRepository,
-			SurveyRepository surveyRepository) {
+			SurveyRepository surveyRepository, @Value("${db.seed:false}") boolean seedDb) {
 		this.categoryRepository = categoryRepository;
 		this.questionRepository = questionRepository;
 		this.surveyRepository = surveyRepository;
+		this.seedDb = seedDb;
 	}
 
 	@Override
