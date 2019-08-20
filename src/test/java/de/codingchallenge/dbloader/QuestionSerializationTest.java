@@ -1,10 +1,10 @@
-package dbloader;
+package de.codingchallenge.dbloader;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import model.NumberRangeQuestionType;
-import model.Question;
-import model.SingleChoiceConditionalQuestionType;
-import model.SingleChoiceQuestionType;
+import de.codingchallenge.model.NumberRangeQuestionType;
+import de.codingchallenge.model.Question;
+import de.codingchallenge.model.SingleChoiceConditionalQuestionType;
+import de.codingchallenge.model.SingleChoiceQuestionType;
 import org.json.JSONException;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;

@@ -1,10 +1,10 @@
-package dbloader;
+package de.codingchallenge.dbloader;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import model.Category;
-import model.Question;
+import de.codingchallenge.model.Category;
+import de.codingchallenge.model.Question;
 
 import java.util.List;
 

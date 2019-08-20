@@ -1,6 +1,6 @@
-package repository;
+package de.codingchallenge.repository;
 
-import model.Survey;
+import de.codingchallenge.model.Survey;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import java.util.List;

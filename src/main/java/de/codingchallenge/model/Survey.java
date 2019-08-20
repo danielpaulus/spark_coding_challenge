@@ -1,4 +1,4 @@
-package model;
+package de.codingchallenge.model;
 
 import org.springframework.data.annotation.Id;
 

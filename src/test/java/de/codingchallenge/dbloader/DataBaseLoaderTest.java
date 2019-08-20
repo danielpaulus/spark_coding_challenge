@@ -1,8 +1,11 @@
-package dbloader;
+package de.codingchallenge.dbloader;
 
-import model.Category;
-import model.Question;
-import model.Survey;
+import de.codingchallenge.model.Category;
+import de.codingchallenge.model.Question;
+import de.codingchallenge.model.Survey;
+import de.codingchallenge.repository.CategoryRepository;
+import de.codingchallenge.repository.QuestionRepository;
+import de.codingchallenge.repository.SurveyRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
@@ -12,9 +15,6 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import repository.CategoryRepository;
-import repository.QuestionRepository;
-import repository.SurveyRepository;
 
 import java.util.List;
 
@@ -38,6 +38,7 @@ class DataBaseLoaderTest {
 	@BeforeEach
 	void setUp() {
 		dataBaseLoader = new DataBaseLoader(categoryRepository, questionRepository, surveyRepository);
+		dataBaseLoader.seedDb = true;
 	}
 
 	@Test
