@@ -11,25 +11,37 @@ class SingleChoiceConditionalQuestion extends Component {
   }
 
 handleClick = (e) => {
-        this.props.onDataChange(e.target.id, e.target.value);
-      if (evaluateCondition(this.props.condition.predicate, e.target.value)) {
-        this.setState(() => ({extraQuestionVisible: true}));
+       this.props.onDataChange(e.target.id, {'a':e.target.value});
+       const currentOption = {id: e.target.id, answer: {'a':e.target.value}}
+       const selectedOption = e.target.getAttribute('option')
+      if (evaluateCondition(this.props.condition.predicate, selectedOption)) {
+        this.setState(() => ({extraQuestionVisible: true, currentOption:currentOption }),
+        ()=>this.changeEmbeddedQuestionData({'key': "extra", 'value': 18})
+        );
+
       } else {
         this.setState(() => ({extraQuestionVisible: false}));
       }
     };
 
+changeEmbeddedQuestionData = (changedValue) => {
+ const id = this.state.currentOption.id;
+ const selectedAnswer = this.state.currentOption.answer;
+ selectedAnswer[changedValue.key] = changedValue.value;
+ this.props.onDataChange(id, selectedAnswer);
+}
+
   render() {
     const options = this.props.options.map( (option, index) =>
       <div>
-        <input onClick={this.handleClick} type="radio" id={this.props.questionIndex+'_'+index} name={this.props.questionIndex} value={option} />
+        <input onClick={this.handleClick} type="radio" id={'q'+this.props.questionIndex} name={this.props.questionIndex} option={option} value={index} />
         <label for={this.props.questionIndex+'_'+index}>{option}</label>
       </div>
     );
     return <div>{options}
       {
           this.state.extraQuestionVisible
-                    ? <Question onDataChange={this.props.onDataChange} questionIndex={this.props.questionIndex+'extra'} details={this.props.condition.if_positive}/>
+                    ? <Question onDataChange={this.changeEmbeddedQuestionData} questionIndex={this.props.questionIndex+'extra'} details={this.props.condition.if_positive}/>
                     : null
       }
     </div>;

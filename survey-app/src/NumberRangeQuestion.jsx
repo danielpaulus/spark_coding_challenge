@@ -15,11 +15,10 @@ constructor() {
 handleChange = (value) => {
   this.setState({value: value});
 
-  this.props.onDataChange("slider", value);
+  this.props.onDataChange( {'key': "extra", 'value': value});
 }
 
 render() {
-console.log(this.props);
   return (
   <div className="slider">
      <Slider
