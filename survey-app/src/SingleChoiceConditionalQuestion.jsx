@@ -34,7 +34,7 @@ changeEmbeddedQuestionData = (changedValue) => {
   render() {
     const options = this.props.options.map( (option, index) =>
       <div>
-        <input onClick={this.handleClick} type="radio" id={'q'+this.props.questionIndex} name={this.props.questionIndex} option={option} value={index} />
+        <input required onClick={this.handleClick} type="radio" id={'q'+this.props.questionIndex} name={this.props.questionIndex} option={option} value={index} />
         <label for={this.props.questionIndex+'_'+index}>{option}</label>
       </div>
     );

@@ -30,7 +30,7 @@ render(){
     <div className="App">
       <header className="App-header">
             <h1></h1>
-            <Survey categories={this.state.categories} survey={this.state.survey}/>
+            <Survey apiUrl={apiUrl} categories={this.state.categories} survey={this.state.survey}/>
       </header>
     </div>
   );}

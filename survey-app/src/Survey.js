@@ -22,13 +22,18 @@ constructor() {
 submitForm = (e) =>{
     e.preventDefault();
     console.log(this.state);
+    console.log(e);
+    fetch(this.props.apiUrl+'/answer', {
+       method: 'post',
+       body: this.state.answers
+      }).then(res => console.log(res));
 }
 
   render() {
     const questions = this.props.categories.map((category) => {
                             return <QuestionList onDataChange={this.onDataChange} questions={this.props.survey.questions} category={category}/>
                           });
-    return <form>{questions}<button onClick={this.submitForm}>submit</button></form>
+    return <form onSubmit={this.submitForm}>{questions}<button type="submit">Submit</button></form>
   }
 }
 
