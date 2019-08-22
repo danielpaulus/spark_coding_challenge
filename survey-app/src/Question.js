@@ -14,6 +14,9 @@ render(){
     case 'single_choice_conditional':
     questionType = <SingleChoiceConditionalQuestion condition={this.props.details.question_type.condition} questionIndex={this.props.questionIndex} options={this.props.details.question_type.options}/>;
              break;
+     case 'number_range':
+        questionType = <p>number range</p>;
+                 break;
     }
     return  <div> {title} {questionType} </div>
 
