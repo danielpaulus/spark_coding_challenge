@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
@@ -16,6 +17,8 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.nio.file.Files;
+
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = { Application.class, SpringMongoTestConfiguration.class })
@@ -47,5 +50,31 @@ class RestControllerIT extends ContainerBaseTest {
 		var jsonFile = new ClassPathResource("expected_survey.json").getFile();
 		var expectedJson = Files.readString(jsonFile.toPath());
 		JSONAssert.assertEquals(expectedJson, contentAsString, false);
+	}
+
+	@Test
+	void if_a_valid_response_can_be_saved() throws Exception {
+		var jsonFile = new ClassPathResource("survey_response.json").getFile();
+		var jsonToPost = Files.readString(jsonFile.toPath());
+		mockMvc.perform(MockMvcRequestBuilders.post("/api/response").contentType(MediaType.APPLICATION_JSON)
+				.content(jsonToPost))
+				.andExpect(status().isCreated());
+	}
+
+	@Test
+	void if_a_valid_response_with_extra_can_be_saved() throws Exception {
+		var jsonFile = new ClassPathResource("survey_response_extra.json").getFile();
+		var jsonToPost = Files.readString(jsonFile.toPath());
+		mockMvc.perform(MockMvcRequestBuilders.post("/api/response").contentType(MediaType.APPLICATION_JSON)
+				.content(jsonToPost))
+				.andExpect(status().isCreated());
+	}
+
+
+	@Test
+	void if_a_invalid_response_is_rejected() throws Exception {
+		mockMvc.perform(MockMvcRequestBuilders.post("/api/response").contentType(MediaType.APPLICATION_JSON)
+				.content("{}"))
+				.andExpect(status().isUnprocessableEntity());
 	}
 }
