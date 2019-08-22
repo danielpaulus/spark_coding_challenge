@@ -1,11 +1,9 @@
 package de.codingchallenge.repository;
 
-import de.codingchallenge.model.SurveyResponse;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-import java.util.List;
+import java.util.Map;
 
-public interface SurveyResponseRepository extends MongoRepository<SurveyResponse, String> {
+public interface SurveyResponseRepository extends MongoRepository<Map<String, Object>, String> {
 
-	List<SurveyResponse> findAll();
 }
