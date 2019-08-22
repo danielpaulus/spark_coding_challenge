@@ -1,11 +1,10 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react';
 
 
-class Category extends Component{
-
-render(){
-    return <h1>{this.props.title}</h1>
-    }
+class Category extends Component {
+  render() {
+    return <h1>{this.props.title}</h1>;
+  }
 }
 
 export default Category;

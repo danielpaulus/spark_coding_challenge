@@ -8,16 +8,18 @@ constructor() {
     this.state = {
       value: 3
     }
+
   }
 
 
 handleChange = (value) => {
   this.setState({value: value});
 
+  this.props.onDataChange("slider", value);
 }
 
 render() {
-
+console.log(this.props);
   return (
   <div className="slider">
      <Slider
