@@ -11,5 +11,6 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo;
 		@JsonSubTypes.Type(value = NumberRangeQuestionType.class, name = NumberRangeQuestionType.TYPE_NAME),
 		@JsonSubTypes.Type(value = SingleChoiceConditionalQuestionType.class, name = SingleChoiceConditionalQuestionType.TYPE_NAME),
 })
-interface QuestionType {
+public interface QuestionType {
+	String getQuestionType();
 }

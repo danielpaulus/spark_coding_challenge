@@ -27,8 +27,9 @@ class SurveyResponseServiceTest {
 	@Mock private SurveyResponseRepository surveyResponseRepository;
 
 	private List<Survey> surveyFixture = Lists.list(
-			new Survey(Lists.list(new Question("bla", new Category("category"), new SingleChoiceQuestionType(Lists.list("1", "2"))))),
-			new Survey(Lists.list(new Question("bla2", new Category("category2"), new SingleChoiceQuestionType(Lists.list("1", "2"))))));
+			new Survey(Lists.list(new Question("bla", new Category("category"), new SingleChoiceQuestionType(Lists.list("1", "2"))),
+					new Question("bla", new Category("category"), new SingleChoiceQuestionType(Lists.list("1", "2")))
+			)));
 
 	private SurveyResponseService surveyResponseService;
 
@@ -81,7 +82,6 @@ class SurveyResponseServiceTest {
 
 	@Test
 	void if_empty_response_is_invalid() {
-		when(surveyRepository.findAll()).thenReturn(surveyFixture);
 		boolean validate = surveyResponseService.validate(new SurveyResponse(Collections.emptyMap()));
 		assertThat(validate).isEqualTo(false);
 	}

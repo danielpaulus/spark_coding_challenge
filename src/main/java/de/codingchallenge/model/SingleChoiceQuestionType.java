@@ -7,7 +7,7 @@ import java.util.List;
 
 public class SingleChoiceQuestionType implements QuestionType {
 
-	static final String TYPE_NAME = "single_choice";
+	public static final String TYPE_NAME = "single_choice";
 
 	private final List<String> options;
 
