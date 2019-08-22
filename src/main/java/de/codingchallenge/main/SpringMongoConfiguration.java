@@ -20,7 +20,7 @@ public class SpringMongoConfiguration extends AbstractMongoConfiguration {
 	@Bean
 	@Override
 	public MongoClient mongoClient() {
-		return new MongoClient("localhost");
+		return new MongoClient("mongo");
 	}
 
 	@Bean
