@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import SingleChoiceQuestion from './SingleChoiceQuestion'
 class Question extends Component{
 
 render(){
@@ -7,7 +7,7 @@ render(){
     var questionType = '';
     switch (this.props.details.question_type.type){
     case 'single_choice':
-         questionType = <p>single_choice</p>;
+         questionType = <SingleChoiceQuestion questionIndex={this.props.questionIndex} options={this.props.details.question_type.options}/>;
          break;
     case 'single_choice_conditional':
     questionType = <p>single_choice_conditional</p>;
