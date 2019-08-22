@@ -23,7 +23,7 @@ submitForm = (e) =>{
     e.preventDefault();
     console.log(this.state);
     console.log(e);
-    fetch(this.props.apiUrl+'/answer', {
+    fetch('/api/answer', {
        method: 'post',
        body: this.state.answers
       }).then(res => console.log(res));

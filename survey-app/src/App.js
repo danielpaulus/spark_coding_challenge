@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Survey from './Survey';
-const apiUrl = 'http://localhost:4000';
+
 class App extends Component {
 
  state = {
@@ -10,14 +10,14 @@ class App extends Component {
 
  }
  componentDidMount() {
-        fetch(`${apiUrl}/surveys`)
+        fetch('/api/surveys')
         .then(res => res.json())
         .then((data) => {
           this.setState({ survey: data[0] })
         })
         .catch(console.log)
 
-        fetch(`${apiUrl}/categories`)
+        fetch('/api/categories')
                 .then(res => res.json())
                 .then((data) => {
                   this.setState({ categories: data })
@@ -30,7 +30,7 @@ render(){
     <div className="App">
       <header className="App-header">
             <h1></h1>
-            <Survey apiUrl={apiUrl} categories={this.state.categories} survey={this.state.survey}/>
+            <Survey categories={this.state.categories} survey={this.state.survey}/>
       </header>
     </div>
   );}
