@@ -11,8 +11,8 @@ class SingleChoiceConditionalQuestion extends Component {
   }
 
 handleClick = (e) => {
-       this.props.onDataChange(e.target.id, {'a':e.target.value});
-       const currentOption = {id: e.target.id, answer: {'a':e.target.value}}
+       this.props.onDataChange(e.target.id, {'a':parseInt(e.target.value)});
+       const currentOption = {id: e.target.id, answer: {'a':parseInt(e.target.value)}}
        const selectedOption = e.target.getAttribute('option')
       if (evaluateCondition(this.props.condition.predicate, selectedOption)) {
         this.setState(() => ({extraQuestionVisible: true, currentOption:currentOption }),
@@ -27,7 +27,7 @@ handleClick = (e) => {
 changeEmbeddedQuestionData = (changedValue) => {
  const id = this.state.currentOption.id;
  const selectedAnswer = this.state.currentOption.answer;
- selectedAnswer[changedValue.key] = changedValue.value;
+ selectedAnswer[changedValue.key] = parseInt(changedValue.value);
  this.props.onDataChange(id, selectedAnswer);
 }
 
