@@ -25,7 +25,10 @@ submitForm = (e) =>{
     console.log(e);
     fetch('/api/response', {
        method: 'post',
-       body: this.state.answers
+       headers: {
+                   'Content-Type': 'application/json',
+               },
+       body: JSON.stringify(this.state.answers)
       }).then(res => console.log(res));
 }
 
