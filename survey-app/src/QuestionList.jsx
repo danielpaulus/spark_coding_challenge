@@ -13,6 +13,7 @@ class QuestionList extends Component {
                 if (question.category === this.props.category) {
                   return <Question onDataChange={this.props.onDataChange} questionIndex={index} details={question}/>;
                 }
+                return '';
               }
               )
         }

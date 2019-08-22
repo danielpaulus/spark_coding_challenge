@@ -17,6 +17,8 @@ class Question extends Component {
       case 'number_range':
         questionType = <NumberRangeQuestion onDataChange={this.props.onDataChange} questionIndex={this.props.questionIndex} range={this.props.details.question_type.range}/>;
         break;
+      default:
+        throw new Error('Unknown QuestionType:'+this.props.details.question_type.type);
     }
     return <div> {title} {questionType} </div>;
   }
