@@ -34,7 +34,7 @@ submitForm = (e) =>{
 
   render() {
     const questions = this.props.categories.map((category) => {
-                            return <QuestionList onDataChange={this.onDataChange} questions={this.props.survey.questions} category={category}/>
+                            return <QuestionList key={'qlist_'+category} onDataChange={this.onDataChange} questions={this.props.survey.questions} category={category}/>
                           });
     return <form onSubmit={this.submitForm}>{questions}<button type="submit">Submit</button></form>
   }

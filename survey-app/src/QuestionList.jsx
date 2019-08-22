@@ -11,7 +11,7 @@ class QuestionList extends Component {
           this.props.questions
               .map( (question, index) => {
                 if (question.category === this.props.category) {
-                  return <Question onDataChange={this.props.onDataChange} questionIndex={index} details={question}/>;
+                  return <Question key={'question_'+index} onDataChange={this.props.onDataChange} questionIndex={index} details={question}/>;
                 }
                 return '';
               }

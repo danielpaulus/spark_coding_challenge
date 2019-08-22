@@ -10,7 +10,7 @@ class SingleChoiceQuestion extends Component {
     const options = this.props.options.map( (option, index) =>
       <div>
         <input required onClick={this.handleClick} type="radio" id={'q'+this.props.questionIndex} name={this.props.questionIndex} value={index} />
-        <label for={this.props.questionIndex+'_'+index}>{option}</label>
+        <label htmlFor={this.props.questionIndex+'_'+index}>{option}</label>
       </div>
 
     );
