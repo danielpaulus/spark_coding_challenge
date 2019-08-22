@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 const displayNames = {'hard_fact': 'Hard Fact',
-  'lifestyle': 'LifeStyle',
+  'lifestyle': 'Lifestyle',
   'introversion': 'Introversion',
   'passion': 'Passion'};
 
