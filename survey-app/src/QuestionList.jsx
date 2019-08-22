@@ -17,6 +17,7 @@ class QuestionList extends Component {
               )
         }
       </div>
+      <hr />
     </div>;
   }
 }
