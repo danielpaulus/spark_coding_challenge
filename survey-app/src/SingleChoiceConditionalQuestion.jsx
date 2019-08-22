@@ -27,7 +27,7 @@ const options = this.props.options.map( (option, index) =>
         <label for={this.props.questionIndex+'_'+index}>{option}</label>
     </div>
     );
-return <div><p>conditional</p>{options}
+return <div>{options}
         {
           this.state.extraQuestionVisible
                     ? <Question questionIndex={this.props.questionIndex+'extra'} details={this.props.condition.if_positive}/>
