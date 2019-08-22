@@ -18,7 +18,7 @@ class SurveyController {
 		this.surveyRepository = surveyRepository;
 	}
 
-	@RequestMapping("/survey")
+	@RequestMapping("/surveys")
 	List<Survey> listSurveys() {
 		return surveyRepository.findAll();
 	}

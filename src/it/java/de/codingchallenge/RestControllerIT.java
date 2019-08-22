@@ -37,7 +37,7 @@ class RestControllerIT extends ContainerBaseTest {
 
 	@Test
 	void if_all_four_categories_can_be_retrieved() throws Exception {
-		var result = mockMvc.perform(MockMvcRequestBuilders.get("/api/category")).andReturn();
+		var result = mockMvc.perform(MockMvcRequestBuilders.get("/api/categories")).andReturn();
 		var contentAsString = result.getResponse().getContentAsString();
 		var expectedJson = "[\"hard_fact\",\"lifestyle\",\"introversion\",\"passion\"]";
 		JSONAssert.assertEquals(expectedJson, contentAsString, false);
@@ -45,7 +45,7 @@ class RestControllerIT extends ContainerBaseTest {
 
 	@Test
 	void if_the_survey_is_retrieved_correctly() throws Exception {
-		var result = mockMvc.perform(MockMvcRequestBuilders.get("/api/survey")).andReturn();
+		var result = mockMvc.perform(MockMvcRequestBuilders.get("/api/surveys")).andReturn();
 		var contentAsString = result.getResponse().getContentAsString();
 		var jsonFile = new ClassPathResource("expected_survey.json").getFile();
 		var expectedJson = Files.readString(jsonFile.toPath());

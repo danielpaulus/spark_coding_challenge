@@ -19,7 +19,7 @@ class CategoryController {
 		this.categoryRepository = categoryRepository;
 	}
 
-	@RequestMapping("/category")
+	@RequestMapping("/categories")
 	List<Category> categories() {
 		return categoryRepository.findAll();
 	}

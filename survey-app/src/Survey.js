@@ -23,7 +23,7 @@ submitForm = (e) =>{
     e.preventDefault();
     console.log(this.state);
     console.log(e);
-    fetch('/api/answer', {
+    fetch('/api/response', {
        method: 'post',
        body: this.state.answers
       }).then(res => console.log(res));
