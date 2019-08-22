@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import SingleChoiceQuestion from './SingleChoiceQuestion'
+import SingleChoiceConditionalQuestion from './SingleChoiceConditionalQuestion'
+
 class Question extends Component{
 
 render(){
@@ -10,7 +12,7 @@ render(){
          questionType = <SingleChoiceQuestion questionIndex={this.props.questionIndex} options={this.props.details.question_type.options}/>;
          break;
     case 'single_choice_conditional':
-    questionType = <p>single_choice_conditional</p>;
+    questionType = <SingleChoiceConditionalQuestion condition={this.props.details.question_type.condition} questionIndex={this.props.questionIndex} options={this.props.details.question_type.options}/>;
              break;
     }
     return  <div> {title} {questionType} </div>
