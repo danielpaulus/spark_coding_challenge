@@ -34,7 +34,7 @@ public class DataBaseLoader implements CommandLineRunner {
 			return;
 		}
 		var objectMapper = new ObjectMapper();
-		var jsonFile = new ClassPathResource("personality_test.json").getFile();
+		var jsonFile = new ClassPathResource("personality_test.json").getInputStream();
 		var jsonImport = objectMapper.readValue(jsonFile, JsonImport.class);
 		categoryRepository.saveAll(jsonImport.getCategories());
 		questionRepository.saveAll(jsonImport.getQuestions());
