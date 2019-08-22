@@ -1,6 +1,7 @@
 package de.codingchallenge.service;
 
 import de.codingchallenge.model.SurveyResponse;
+import de.codingchallenge.repository.SurveyRepository;
 import de.codingchallenge.repository.SurveyResponseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,13 +10,17 @@ import org.springframework.stereotype.Service;
 public class SurveyResponseService {
 
 	private final SurveyResponseRepository surveyResponseRepository;
+	private final SurveyRepository surveyRepository;
 
 	@Autowired
-	SurveyResponseService(SurveyResponseRepository surveyRepository) {
-		this.surveyResponseRepository = surveyRepository;
+	SurveyResponseService(SurveyResponseRepository surveyResponseRepository,
+			SurveyRepository surveyRepository) {
+		this.surveyResponseRepository = surveyResponseRepository;
+		this.surveyRepository = surveyRepository;
 	}
 
 	public boolean validate(SurveyResponse surveyResponse) {
+
 		return false;
 	}
 
