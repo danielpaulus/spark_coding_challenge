@@ -8,9 +8,11 @@ class QuestionList extends Component {
       <Category title={this.props.category}/>
       <div>
         {
-          this.props.questions.filter((question) => question.category === this.props.category)
+          this.props.questions
               .map( (question, index) => {
+                if (question.category === this.props.category){
                 return <Question onDataChange={this.props.onDataChange} questionIndex={index} details={question}/>;
+                }
               }
               )
         }
