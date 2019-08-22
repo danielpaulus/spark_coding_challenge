@@ -21,7 +21,7 @@ public class SurveyResponseService {
 
 	public boolean validate(SurveyResponse surveyResponse) {
 
-		return false;
+		return true;
 	}
 
 	public void save(SurveyResponse surveyResponse) {
