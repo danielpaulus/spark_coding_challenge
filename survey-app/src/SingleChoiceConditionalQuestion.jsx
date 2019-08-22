@@ -1,43 +1,39 @@
-import React, { Component } from 'react'
-import { evaluateCondition } from './ConditionEvaluator'
-import  Question from './Question'
+import React, {Component} from 'react';
+import {evaluateCondition} from './ConditionEvaluator';
+import Question from './Question';
 
-class SingleChoiceConditionalQuestion extends Component{
-
-constructor() {
+class SingleChoiceConditionalQuestion extends Component {
+  constructor() {
     super();
     this.state = {
-      extraQuestionVisible: false
-    }
+      extraQuestionVisible: false,
+    };
   }
 
-render(){
-const handleClick = (e) => {
+  render() {
+    const handleClick = (e) => {
+      if (evaluateCondition(this.props.condition.predicate, e.target.value)) {
+        this.setState(() => ({extraQuestionVisible: true}));
+      } else {
+        this.setState(() => ({extraQuestionVisible: false}));
+      }
+    };
 
-    if (evaluateCondition(this.props.condition.predicate, e.target.value)){
-        this.setState(() => ({ extraQuestionVisible: true }));
-    } else {
-    this.setState(() => ({ extraQuestionVisible: false }));
-    }
-  }
-
-const options = this.props.options.map( (option, index) =>
-    <div>
-        <input  onClick={handleClick} type="radio" id={this.props.questionIndex+'_'+index} name={this.props.questionIndex} value={option} />
+    const options = this.props.options.map( (option, index) =>
+      <div>
+        <input onClick={handleClick} type="radio" id={this.props.questionIndex+'_'+index} name={this.props.questionIndex} value={option} />
         <label for={this.props.questionIndex+'_'+index}>{option}</label>
-    </div>
+      </div>
     );
-return <div>{options}
-        {
+    return <div>{options}
+      {
           this.state.extraQuestionVisible
                     ? <Question questionIndex={this.props.questionIndex+'extra'} details={this.props.condition.if_positive}/>
                     : null
-                }
-        </div>
+      }
+    </div>;
+  }
 }
-
-}
-export default SingleChoiceConditionalQuestion
-
+export default SingleChoiceConditionalQuestion;
 
 
