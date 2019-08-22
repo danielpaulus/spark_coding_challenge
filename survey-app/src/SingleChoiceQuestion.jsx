@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 class SingleChoiceQuestion extends Component {
 
   handleClick = (e) => {
-          this.props.onDataChange(e.target.id, {'a':parseInt(e.target.value)});
+          this.props.onDataChange(e.target.id, parseInt(e.target.value));
           }
 
   render() {
