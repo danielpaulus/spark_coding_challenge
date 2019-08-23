@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import QuestionList from './QuestionList';
+import Button from 'react-bootstrap/Button';
+
 class Survey extends Component {
 
 constructor() {
@@ -36,7 +38,7 @@ submitForm = (e) =>{
     const questions = this.props.categories.map((category) => {
                             return <QuestionList key={'qlist_'+category} onDataChange={this.onDataChange} questions={this.props.survey.questions} category={category}/>
                           });
-    return <form onSubmit={this.submitForm}>{questions}<button type="submit">Submit</button></form>
+    return <form onSubmit={this.submitForm}>{questions}<Button type="submit">Submit</Button></form>
   }
 }
 

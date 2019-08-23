@@ -5,7 +5,7 @@ import NumberRangeQuestion from './NumberRangeQuestion';
 
 class Question extends Component {
   render() {
-    const title = <h3>{this.props.details.question} </h3>;
+    const title = <h3  className="card-title">{this.props.details.question} </h3>;
     let questionType = '';
     switch (this.props.details.question_type.type) {
       case 'single_choice':
@@ -20,7 +20,7 @@ class Question extends Component {
       default:
         throw new Error('Unknown QuestionType:'+this.props.details.question_type.type);
     }
-    return <div> {title} {questionType} </div>;
+    return <div  className="card"> {title} {questionType} </div>;
   }
 }
 

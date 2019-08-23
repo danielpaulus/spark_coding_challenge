@@ -33,12 +33,12 @@ changeEmbeddedQuestionData = (changedValue) => {
 
   render() {
     const options = this.props.options.map( (option, index) =>
-      <div>
-        <input required onClick={this.handleClick} type="radio" id={'q'+this.props.questionIndex} name={this.props.questionIndex} option={option} value={index} />
+      <div class="form-group">
+        <input class="form-control" required onClick={this.handleClick} type="radio" id={'q'+this.props.questionIndex} name={this.props.questionIndex} option={option} value={index} />
         <label htmlFor={this.props.questionIndex+'_'+index}>{option}</label>
       </div>
     );
-    return <div>{options}
+    return <div className="card-body">{options}
       {
           this.state.extraQuestionVisible
                     ? <Question onDataChange={this.changeEmbeddedQuestionData} questionIndex={this.props.questionIndex+'extra'} details={this.props.condition.if_positive}/>
