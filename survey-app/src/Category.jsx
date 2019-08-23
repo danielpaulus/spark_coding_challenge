@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 
-const displayNames = {'hard_fact': 'Hard Fact',
-  'lifestyle': 'Lifestyle',
-  'introversion': 'Introversion',
-  'passion': 'Passion'};
+const displayNames = {'hard_fact': '🕵️ Hard Fact',
+  'lifestyle': '🍹 Lifestyle',
+  'introversion': '🤓 Introversion',
+  'passion': '❤️ Passion'};
 
 class Category extends Component {
   render() {
